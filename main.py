@@ -15,8 +15,6 @@ import pandas as pd
 
 # COMMAND ----------
 
-
-
 current_directory = os.getcwd()
 files = os.listdir('.')
 
@@ -48,7 +46,6 @@ def determine_file_format(file_path):
         print('ERROR: Unknown Format')
         return file_path
 
-
 structure = 'structured-data'
 file_name = 'employee.csv'
 file_path = f'/Workspace/Users/labuser8667937_1733537801@vocareum.com/DYNAMIC_BRONZE_INGEST/{structure}/{file_name}'
@@ -60,3 +57,9 @@ isValid_file_type = determine_file_format(file_path)
 df = pd.read_csv(isValid_file_type)
 
 df.head()
+df.describe()
+
+df[
+    ['first_name', 'company_name']
+].query('first_name == "John"')
+
